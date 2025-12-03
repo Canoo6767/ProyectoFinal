@@ -1,4 +1,6 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 public class ControladorConcurrente {
 
@@ -10,6 +12,7 @@ public class ControladorConcurrente {
     }
 
     public static List<Resultado> ejecutar(long tiempoLimiteMs) {
+        // Datos requeridos (arrays y listas)
         int[][] arrays = {
             GeneradorDatos.C100(),
             GeneradorDatos.C50000(),
@@ -23,6 +26,7 @@ public class ControladorConcurrente {
             GeneradorDatos.L100000_1a5()
         };
 
+        // Workers
         WorkerAlgoritmo wSelection = new WorkerAlgoritmo("Selection", AlgoritmosFactory.selection(), arrays, listas, tiempoLimiteMs);
         WorkerAlgoritmo wInsertion = new WorkerAlgoritmo("Insertion", AlgoritmosFactory.insertion(), arrays, listas, tiempoLimiteMs);
         WorkerAlgoritmo wShell     = new WorkerAlgoritmo("Shell",     AlgoritmosFactory.shell(),     arrays, listas, tiempoLimiteMs);
